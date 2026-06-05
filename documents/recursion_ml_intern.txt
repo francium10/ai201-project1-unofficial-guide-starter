@@ -1,0 +1,35 @@
+Source: Reddit r/biotech + personal blog
+URL: https://reddit.com/r/biotech/comments/recursion_pharma_intern_2024
+Title: Recursion Pharmaceuticals ML intern - the most unique biotech internship I've heard of
+
+Role: Machine Learning Engineer Intern, Drug Discovery
+Location: Salt Lake City, UT
+Rating: 5/5
+
+Recursion is unlike any other company in this list. They describe themselves as a "techbio" company — the thesis is that biology can be treated as a massive dataset and AI can discover drugs by learning patterns from phenotypic images of cells. If that sounds wild, it is, and it's legitimately cool.
+
+The Scale:
+Recursion runs one of the world's largest biological datasets — millions of images of cells treated with millions of compounds. They use custom ML models to identify which compound-cell interactions look like they could treat disease. My internship was directly contributing to this pipeline.
+
+My Project:
+Built and evaluated a new data augmentation strategy for their cell morphology classification models. Used PyTorch, AWS SageMaker for training runs, MLflow for experiment tracking, internal data tools. The codebase was production-grade. My augmentation approach improved model F1 on a held-out test set by 3.2% — sounds small but at their scale it matters.
+
+Interview Process (5 rounds — yes, really):
+1. Recruiter screen
+2. ML fundamentals: bias-variance, overfitting, regularization, basic probability
+3. Coding: Python ML code (no LeetCode grind — they want you to actually write ML code)
+4. Research presentation: present a paper you've read in the last 6 months
+5. Team fit: informal chat with 3 team members
+
+They are rigorous. The paper presentation round is unusual and important — pick a paper you genuinely understand deeply, not one that looks impressive.
+
+Culture:
+Salt Lake City is not NYC or SF. If you need urban energy, this is an adjustment. But the company culture is phenomenal — very mission-driven, collaborative, ambitious. Everyone believes they're working on something that will matter.
+
+The ML team is world-class. I learned more about applied ML in 12 weeks than in two semesters of coursework.
+
+Pay: $50-55/hr. No housing stipend. SLC cost of living is low — you'll actually save money.
+
+Downsides: Remote from the SWE job market. Some of the science is so novel it's hard to explain in interviews afterwards. Salt Lake City as a city has limitations.
+
+Who Should Apply: Anyone serious about ML + drug discovery. This is the frontier of the field.

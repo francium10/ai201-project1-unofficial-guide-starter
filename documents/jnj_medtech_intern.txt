@@ -1,0 +1,33 @@
+Source: Reddit r/biotech + LinkedIn post
+URL: https://reddit.com/r/biotech/comments/jnj_medtech_intern_2024
+Title: J&J MedTech Regulatory Intern experience - what no one tells you
+
+Role: Regulatory Affairs Intern, MedTech Division (now Shockwave Medical integration)
+Location: Santa Clara, CA + Raritan, NJ (split)
+Rating: 3.5/5
+
+J&J split into two companies (J&J and Kenvue for consumer) so MedTech is its own focus now. This matters because the regulatory pathway for medical devices (510(k), PMA) is different from drugs (IND/NDA/BLA) and people often don't realize they're applying to very different roles.
+
+My Project:
+510(k) substantial equivalence analysis for a new cardiac catheter. If you don't know what this means: to get a medical device cleared in the US, you often need to prove it's "substantially equivalent" to a predicate device already on the market. I spent 10 weeks analyzing predicate devices, comparing performance characteristics, and drafting sections of the 510(k) submission document.
+
+What I Learned:
+- 510(k) vs PMA pathway decision criteria
+- FDA's predicate device database (510(k) Premarket Notification database)
+- Design controls under 21 CFR Part 820
+- Risk management under ISO 14971
+- How to read and write a substantial equivalence argument
+
+The Honest Truth:
+J&J is enormous and slow. My manager was great but getting anything approved took forever. I attended meetings that felt like they were about scheduling the next meeting. This is normal for Big Pharma/MedTech but it surprised me.
+
+The split from Kenvue also created organizational confusion — some systems and processes were still being separated during my internship. This caused access issues and some unclear reporting lines.
+
+Interview Process:
+Standard Big Pharma: HR screen, then panel (2-3 people). Know the difference between 510(k) and PMA. Know what a predicate device is. They asked me to walk through how I would approach a new device regulatory strategy.
+
+Pay: $28-32/hr for regulatory. Housing: $2,000 stipend. Silicon Valley is expensive — the stipend does not cover a comfortable situation. Remote option available for NJ site roles.
+
+Return Offers: ~25-30% of interns. Lower than competitors. Headcount was tight in 2024.
+
+Best Fit: Someone who wants deep med device regulatory knowledge. The learning is real even if the pace is slow.

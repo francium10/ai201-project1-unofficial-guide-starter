@@ -1,0 +1,26 @@
+Source: Reddit r/cscareerquestions + r/biotech
+URL: https://reddit.com/r/cscareerquestions/comments/benchling_intern_2024
+Title: Benchling SWE intern 2024 - detailed writeup
+
+Background: Junior CS student, minor in biochemistry. Got the Benchling SWE internship through a campus recruiting event. Here's everything I wish I knew going in.
+
+About Benchling:
+Benchling is a lab data management platform — think of it as GitHub for biology. Scientists use it to track experiments, manage samples, design DNA sequences, run CRISPR workflows. It's used by basically every major biotech company. If you want software + life sciences, this is one of the best companies to intern at because the domain is genuinely fascinating.
+
+The Interview:
+4 rounds total. First: 30-min recruiter screen (background, why Benchling, why life sciences software). Second: 1-hour technical screen with 2 LeetCode mediums, emphasis on arrays/strings. Third: System design round — I got asked to design a "molecular sequence versioning system" (very on-brand). Fourth: Behavioral with an engineering manager (STAR format, prepare your stories).
+
+Pro tip: they will ask "what do you know about the life sciences industry?" in at least one round. If you can't answer this, you will struggle. I talked about CRISPR, the shift from paper lab notebooks to digital, and the regulatory challenge of 21 CFR Part 11 compliance.
+
+The Work:
+I was on the Notebook team (core product). My project was building an API endpoint that allowed bulk export of experiment data in different formats (JSON, CSV, PDF). Full ownership — I wrote the spec, built it, reviewed by a senior engineer, shipped it. Real impact.
+
+Engineering stack: Python/FastAPI backend, React/TypeScript frontend, PostgreSQL. Very clean codebase. Excellent documentation culture.
+
+Compensation: ~$50-55/hr in San Francisco. No housing stipend (SF is brutal — budget carefully). Commuter benefits.
+
+Culture: Small cohort (~30 interns). Very accessible leadership — I had coffee with the CTO in week 2. Flat hierarchy. Fast-moving. Can feel chaotic if you need a lot of structure.
+
+Downsides: San Francisco cost of living. Startup-ish pace means priorities shift. Some projects got de-scoped mid-internship.
+
+Rating: 9.5/10. Best internship experience I've heard of in the biotech-software space.

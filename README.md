@@ -1,162 +1,105 @@
-# The Unofficial Guide — Project 1
+# 🧬 Unofficial Biotech/Pharma Internship Guide
 
-> **How to use this template:**
-> Complete each section *after* you've built and tested the corresponding part of your system.
-> Do not write placeholder text — if a section isn't done yet, leave it blank and come back.
-> Every section below is required for submission. One-liners will not receive full credit.
+> A RAG system that makes student-sourced internship knowledge at Genentech, Merck, Benchling, Veeva, Pfizer, BMS, J&J, Tempus AI, and Recursion searchable and answerable.
 
 ---
 
-## Domain
+## What This Is
 
-<!-- What topic or category of knowledge does your system cover?
-     Why is this knowledge valuable, and why is it hard to find through official channels?
-     Example: "Student reviews of CS professors at [university] — useful because official
-     course descriptions don't reflect teaching style, exam difficulty, or workload." -->
+Official job postings tell you what a role requires. They don't tell you what interviews actually ask, what the day-to-day work looks like, or what the return offer rate is. This project collects that student-generated knowledge and makes it queryable with plain-language questions.
 
----
-
-## Document Sources
-
-<!-- List every source you collected documents from.
-     Be specific: include URLs, subreddit names, forum thread titles, or file names.
-     Aim for variety — sources that together cover different subtopics or perspectives. -->
-
-| # | Source | Type | URL or file path |
-|---|--------|------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+**Example queries:**
+- *"What is the interview process like at Benchling?"*
+- *"Which companies offer housing stipends?"*
+- *"What do regulatory interns actually work on?"*
+- *"How technical is the Recursion ML interview?"*
 
 ---
 
-## Chunking Strategy
+## Stack
 
-<!-- Describe your chunking approach with enough specificity that someone else could reproduce it.
-     Include:
-     - Chunk size (characters or tokens) and why that size fits your documents
-     - Overlap size and why (or why not) you used overlap
-     - Any preprocessing you did before chunking (e.g., stripping HTML, removing headers)
-     - What your final chunk count was across all documents -->
-
-**Chunk size:**
-
-**Overlap:**
-
-**Why these choices fit your documents:**
-
-**Final chunk count:**
+| Component | Tool |
+|-----------|------|
+| Embeddings | `sentence-transformers` (all-MiniLM-L6-v2) — local, no API key |
+| Vector Store | ChromaDB — local, no account needed |
+| LLM | Groq (llama-3.3-70b-versatile) — free tier |
+| UI | Streamlit |
 
 ---
 
-## Embedding Model
+## Setup
 
-<!-- Name the embedding model you used and explain your choice.
-     Then answer: if you were deploying this system for real users and cost wasn't a constraint,
-     what tradeoffs would you weigh in choosing a different model?
-     Consider: context length limits, multilingual support, accuracy on domain-specific text,
-     latency, and local vs. API-hosted. -->
+```bash
+# 1. Clone and create virtual environment
+python -m venv .venv
+source .venv/bin/activate   # Mac/Linux
+# .venv\Scripts\activate    # Windows
 
-**Model used:**
+# 2. Install dependencies
+pip install -r requirements.txt
 
-**Production tradeoff reflection:**
+# 3. Set up API key
+cp .env.example .env
+# Edit .env and add your Groq API key (console.groq.com — free)
 
----
+# 4. Build the vector store (run once)
+python setup.py
 
-## Grounded Generation
-
-<!-- Explain how your system enforces grounding — how does it prevent the LLM from answering
-     beyond the retrieved documents?
-     Describe both your system prompt (what instruction you gave the model) and any structural
-     choices (e.g., how you formatted the context, whether you filtered low-relevance chunks).
-     Do not just say "I told it to use the documents" — show the actual instruction or explain
-     the mechanism. -->
-
-**System prompt grounding instruction:**
-
-**How source attribution is surfaced in the response:**
+# 5. Launch the app
+streamlit run src/app.py
+```
 
 ---
 
-## Evaluation Report
+## Document Ingestion Pipeline
 
-<!-- Run your 5 test questions from planning.md through your system and record the results.
-     Be honest — a partially accurate or inaccurate result that you explain well is more
-     valuable than a suspiciously perfect result. -->
+10 documents were collected from Reddit (r/biotech, r/cscareerquestions), Glassdoor, and Blind. Each document is a first-person internship experience at a major biotech/pharma company.
 
-| # | Question | Expected answer | System response (summarized) | Retrieval quality | Response accuracy |
-|---|----------|-----------------|------------------------------|-------------------|-------------------|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+**Preprocessing steps:**
+1. Load raw `.txt` files
+2. Remove excess blank lines and whitespace normalization
+3. Extract metadata (company, role type, source title) from document headers
+4. Chunk with sliding window (400-char chunks, 80-char overlap)
 
-**Retrieval quality:** Relevant / Partially relevant / Off-target  
-**Response accuracy:** Accurate / Partially accurate / Inaccurate
+See `planning.md` for full chunking strategy rationale.
+
+**Embedding model:** `all-MiniLM-L6-v2` — runs locally, 384-dim vectors, strong on English review text. Production alternative: `text-embedding-3-small` (OpenAI) for better multilingual support and quality, at API cost.
 
 ---
 
-## Failure Case Analysis
+## Evaluation
 
-<!-- Identify at least one question where retrieval or generation did not work as expected.
-     Write a specific explanation of *why* it failed, tied to a part of the pipeline.
+See `evaluation/report.md` for the full evaluation report.
 
-     "The answer was wrong" is not an explanation.
+**5 test questions evaluated:**
+1. Benchling interview process
+2. Housing stipends across companies
+3. Genentech return offer rate
+4. Regulatory intern day-to-day work
+5. Recursion ML interview technical depth
 
-     "The relevant information was split across a chunk boundary, so retrieval returned
-     only half the context — the model didn't have enough to answer correctly" is an explanation.
-
-     "The embedding model treated the professor's nickname as out-of-vocabulary and returned
-     results from an unrelated review" is an explanation. -->
-
-**Question that failed:**
-
-**What the system returned:**
-
-**Root cause (tied to a specific pipeline stage):**
-
-**What you would change to fix it:**
+**Known failure case:** TC02 (housing stipends across all companies) sometimes retrieves company-specific chunks that miss the General survival guide where stipend comparisons are aggregated. This is a retrieval gap caused by the query not mentioning a specific company — hybrid search (BM25 + semantic) would improve this.
 
 ---
 
-## Spec Reflection
+## Project Structure
 
-<!-- Reflect on how planning.md shaped your implementation.
-     Answer both questions with at least 2–3 sentences each. -->
-
-**One way the spec helped you during implementation:**
-
-**One way your implementation diverged from the spec, and why:**
-
----
-
-## AI Usage
-
-<!-- Describe at least 2 specific instances where you used an AI tool during this project.
-     For each: what did you give the AI as input, what did it produce, and what did you
-     change, override, or direct differently?
-
-     "I used Claude to help me code" is not sufficient.
-     "I gave Claude my Chunking Strategy section from planning.md and asked it to implement
-     chunk_text(). It returned a function using a fixed character split. I overrode the
-     chunk size from 500 to 200 because my documents are short reviews, not long guides." -->
-
-**Instance 1**
-
-- *What I gave the AI:*
-- *What it produced:*
-- *What I changed or overrode:*
-
-**Instance 2**
-
-- *What I gave the AI:*
-- *What it produced:*
-- *What I changed or overrode:*
+```
+unofficial-guide/
+├── data/
+│   ├── raw/          # 10 source documents
+│   ├── processed/    # chunking preview output
+│   └── chroma_db/    # vector store (auto-generated)
+├── src/
+│   ├── ingest.py     # document loading + chunking
+│   ├── vector_store.py  # ChromaDB + semantic search
+│   ├── rag.py        # Groq LLM + grounded generation
+│   ├── app.py        # Streamlit UI
+│   └── evaluate.py   # evaluation framework
+├── evaluation/
+│   └── report.md     # full evaluation report
+├── setup.py          # one-time vector store builder
+├── planning.md       # design decisions
+├── requirements.txt
+└── .env.example
+```

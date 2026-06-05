@@ -1,0 +1,22 @@
+Source: Reddit r/biotech
+URL: https://reddit.com/r/biotech/comments/genentech_internship_2023
+Title: My Genentech internship experience - summer 2023
+
+I just finished my summer internship at Genentech in South San Francisco and wanted to share my honest experience for anyone interviewing.
+
+Team and Culture:
+I was on the Process Development team working on upstream bioprocessing. My manager was incredibly supportive — weekly 1:1s, clear goals from week one, and they actually cared whether I learned anything. The culture is very collaborative. People will stop what they're doing to explain concepts to you. That said, it's a big company (Roche subsidiary) so things move slowly. Getting access to certain lab equipment required like 4 approval signatures.
+
+Interview Process:
+Two rounds. First was a 30-min phone screen with HR — behavioral questions only, nothing technical. Second was a 3-hour virtual panel with 4 team members: one technical deep dive into your research background, one case study on a hypothetical bioprocess scale-up problem, one behavioral, and one "culture fit" conversation. They really care about scientific communication — be able to explain your undergrad research clearly to a non-expert.
+
+Day-to-Day Work:
+Real work. Not coffee-fetching. I was running fed-batch bioreactor experiments by week 3. You get assigned a project that feeds into an actual pipeline. Had to present findings to the full team at the end. They publish intern contributions in internal reports.
+
+Compensation:
+Around $35-38/hr for bioprocess roles. Housing stipend of $2,000 for the summer. No relocation. They do provide a shuttle from Caltrain which is helpful.
+
+Downsides:
+South San Francisco is expensive. The shuttle schedule is rigid. Some senior scientists can be dismissive of intern ideas — thick skin helps. The intern cohort is large (300+) so you can feel lost at company-wide events.
+
+Overall: 9/10. Would return full-time if they gave me an offer. Strong recommendation for anyone in upstream bioprocessing.

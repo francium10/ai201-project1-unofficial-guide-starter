@@ -1,0 +1,37 @@
+Source: Glassdoor
+URL: https://glassdoor.com/Reviews/merck-intern-reviews-2023
+Title: Merck (MSD) Regulatory Affairs Intern - Summer 2023
+
+Role: Regulatory Affairs Intern, Global Regulatory Strategy
+Location: Rahway, NJ
+Rating: 4/5
+
+Overview:
+Merck is one of the most structured internship programs I've experienced. From day one you have a defined project, a buddy, a manager, and a VP-level mentor. For a large pharma company, the intern program is genuinely excellent. 12 weeks, fully paid, serious work.
+
+My Project:
+I worked on a comparative analysis of FDA vs. EMA submission requirements for a late-stage oncology drug. Basically: given this IND, what additional data would be needed for a parallel EMA filing? I presented my findings to the Global Regulatory Strategy team at week 10. The VP cited my analysis in a real strategy document. That was surreal.
+
+Day-to-Day:
+Lots of document review. Reading FDA guidance documents. Attending cross-functional team meetings (clinical, CMC, regulatory). Using Veeva Vault for document management. Learning about ICH guidelines (Q1, Q8, Q9, Q10 are the big ones for CMC). If you're not comfortable reading dense regulatory text, this role will be an adjustment.
+
+Interview Process:
+Two rounds. HR screen first — basic behavioral, why pharma, why regulatory. Then a panel interview with 3 team members: one scenario question ("a key study fails two weeks before an NDA filing — what do you do?"), one regulatory knowledge question, one behavioral. They expect you to know the difference between an IND and an NDA. Study FDA's website.
+
+Compensation:
+$25-28/hr for regulatory interns (lower than engineering roles). Housing stipend: $3,000 for the summer. Rahway, NJ is affordable and close to NYC by train.
+
+Intern Community:
+Large cohort (~500 interns company-wide). Regular intern events. Lots of networking with full-time employees. Several interns get return offers — roughly 30-40% based on what I observed.
+
+Skills You'll Develop:
+- FDA regulatory pathway knowledge (IND, NDA, BLA, 510k)
+- ICH guideline familiarity
+- Veeva Vault document management
+- Scientific writing and regulatory communication
+- Cross-functional collaboration in big pharma
+
+Downsides:
+Bureaucracy. Everything requires approval. Getting access to certain databases took 3 weeks. Large company = slow decisions. Some projects are purely research with no direct product impact.
+
+Overall: Great for regulatory career foundation. Not for people who want lab work or fast pace.

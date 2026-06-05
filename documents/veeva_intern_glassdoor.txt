@@ -1,0 +1,28 @@
+Source: Glassdoor
+URL: https://glassdoor.com/Reviews/veeva-systems-intern-reviews
+Title: Veeva Systems Software Engineer Intern Review - Summer 2023
+
+Role: Software Engineer Intern, Commercial Cloud Team
+Location: Pleasanton, CA (remote option available)
+Rating: 4/5
+
+Pros:
+Veeva is genuinely different from Big Pharma in that it's a pure SaaS company selling into life sciences. As an intern you're building real features in production systems used by Pfizer, Merck, AstraZeneca. My project involved building a new data validation module for Vault CRM — it shipped to production before my internship ended. That almost never happens at big pharma internships.
+
+The engineering culture is strong. Code reviews are thorough. They use modern stack — Java microservices, React frontend, AWS. Daily standups, sprint planning, retrospectives — real Agile, not fake Agile.
+
+The Generation Veeva intern program is well-organized. Weekly speaker series where executives come talk to interns. Cohort is ~80 interns. You get a buddy (junior employee) and a mentor (senior engineer). Both were genuinely helpful.
+
+Cons:
+Pleasanton is a suburb with not much to do. If you want city life, the remote option is better but you lose some of the cohort experience. 
+
+The interview process is technical and moves fast — two LeetCode-style problems (medium difficulty) plus system design for senior interns. Prepare accordingly. They ask life-sciences-specific questions like "design a clinical trial data tracking system" so domain knowledge helps.
+
+Pay: $45-50/hr for SWE interns. No housing stipend. Relocation reimbursement up to $2,500.
+
+Would recommend for anyone wanting pharma-tech SaaS experience specifically. If you want pure biotech lab work, look elsewhere. If you want software that matters in life sciences, Veeva is excellent.
+
+Interview Tips:
+- Know what Vault CRM and Veeva Network are before your interview
+- Prepare a story about working with data at scale
+- They care a LOT about communication — explain your thinking out loud during technical screens

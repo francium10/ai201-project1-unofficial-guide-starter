@@ -1,0 +1,55 @@
+Source: r/biotech community wiki + multiple intern posts compiled
+URL: https://reddit.com/r/biotech/wiki/internship_guide
+Title: The Unofficial Biotech/Pharma Internship Survival Guide (Community Compiled)
+
+This guide is compiled from hundreds of r/biotech posts over 3 years. It covers what no recruiter will tell you.
+
+COMPENSATION BENCHMARKS (2024):
+- Big Pharma regulatory (Merck, BMS, J&J, Pfizer): $25-32/hr
+- Big Pharma data science/bioinformatics: $38-48/hr
+- Big Pharma lab/research scientist: $22-28/hr
+- Pharma-tech SaaS (Veeva, Benchling, Medidata): $45-55/hr
+- TechBio/AI drug discovery (Recursion, Relay, Insitro): $48-58/hr
+- Clinical-stage biotech startup: $20-30/hr (often with equity discussion for PPO roles)
+
+Housing stipends: About 60% of Big Pharma companies offer them ($2,000-3,500/summer). Pure tech companies (Veeva, Benchling) rarely do. Factor this in when comparing offers.
+
+WHAT ACTUALLY MATTERS IN INTERVIEWS:
+1. Know the FDA regulatory pathway relevant to the role:
+   - Drug roles: IND → Phase 1/2/3 → NDA/BLA
+   - Device roles: 510(k) for Class II, PMA for Class III
+   - Know what an IND is (Investigational New Drug application)
+2. Know ICH guidelines at a high level (Q1-Q13 cover different aspects of pharma development)
+3. Be able to explain your research clearly to a non-expert — this separates candidates at every level
+4. Have genuine answers to "why this company specifically" — generic answers kill applications
+
+RETURN OFFER RATES (community estimates, vary by year):
+- Genentech: ~40-50% for strong performers
+- Merck: ~30-40%
+- BMS: ~35-45%
+- Pfizer: ~20-30% (post-2023 layoffs reduced this)
+- Veeva: ~50-60%
+- Benchling: ~40-50%
+- Recursion: ~30-40%
+- J&J MedTech: ~25-30%
+- Tempus AI: ~40-50%
+
+BIGGEST MISTAKES INTERNS MAKE:
+1. Not networking. In pharma, who you know matters enormously for full-time roles. Schedule coffee chats proactively.
+2. Waiting to be given work. Especially at startups, you need to pull work toward you.
+3. Not understanding their project's business context. Know how your work fits the product/pipeline.
+4. Treating compliance training as a box to check. GxP, HIPAA, SOPs — these exist for real reasons. Taking them seriously marks you as professional.
+5. Not asking for feedback at the midpoint. By the time your end review happens, it's too late to correct course.
+
+TIMELINE TIPS:
+- Big Pharma (Merck, Pfizer, BMS, J&J) open applications in August-October for the following summer
+- Pharma-tech (Veeva, Benchling) open September-December
+- TechBio startups: rolling, often January-March
+- Apply early — many programs fill before the official deadline
+
+SKILLS THAT DIFFERENTIATE:
+- Regulatory knowledge (IND/NDA/BLA/510k/PMA) for regulatory roles
+- Python + bioinformatics tools (Biopython, GATK, NextFlow) for computational roles
+- Veeva Vault familiarity (used everywhere in pharma for document management)
+- GxP documentation practices
+- Scientific writing and communication

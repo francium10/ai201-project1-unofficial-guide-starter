@@ -1,0 +1,32 @@
+Source: Blind + Reddit r/pharm
+URL: https://teamblind.com/post/pfizer-intern-experience-2023
+Title: Pfizer Data Science Intern - honest review
+
+Role: Data Science Intern, Pfizer Digital (formerly PFDS)
+Location: New York, NY (hybrid)
+Rating: 3.5/5
+
+The Good:
+Pfizer Digital is the internal tech arm of Pfizer — it's basically a tech company embedded inside Big Pharma. My project was building a machine learning model to predict clinical trial dropout rates based on patient demographics and trial design features. The dataset was massive, the problem was real, and I had full access to anonymized patient data (after months of compliance paperwork).
+
+The scale of what Pfizer does is staggering. I attended a meeting where they were discussing a trial involving 40,000 patients across 50 countries. The problems are genuinely hard and the stakes are real.
+
+Python stack (pandas, scikit-learn, some PyTorch). Good tooling. Cloudera Data Platform for big data work. Internal MLflow setup for experiment tracking.
+
+The Challenging:
+Big Pharma bureaucracy is real. I spent my first 3 weeks getting system access, completing mandatory training (GxP, HIPAA, data governance — like 40 hours of e-learning), and attending orientation. I didn't touch actual data until week 4.
+
+The hybrid schedule was unclear — some managers wanted you in 3 days/week, others were fine with 1. This caused confusion among the intern cohort.
+
+Pfizer is post-layoff (late 2023 cuts hit hard). Some full-time employees were anxious about job security, which created a tense atmosphere in some teams. Fewer return offers than previous years.
+
+Interview Process:
+Three rounds. Technical screen: SQL queries, Python pandas data manipulation (medium difficulty). Second: case study — given a clinical dataset description, what model would you build and why? Third: behavioral + fit with director. They asked about HIPAA awareness and data privacy — know the basics.
+
+Pay: $40-45/hr for data science. NYC cost of living eats it up. No housing stipend. Metro card provided.
+
+Who Should Apply:
+Perfect for someone wanting pharma-specific data science experience. The clinical domain knowledge you gain is hard to get elsewhere. Not ideal if you want fast-paced startup energy or want to see your work ship quickly.
+
+Advice:
+Be patient with the access/compliance process — it's industry standard, not specific to Pfizer. Use the network. I got coffee with 15+ people in 12 weeks and learned more from those conversations than from my actual project work.

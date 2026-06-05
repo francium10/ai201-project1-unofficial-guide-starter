@@ -1,0 +1,32 @@
+Source: Glassdoor
+URL: https://glassdoor.com/Reviews/bristol-myers-squibb-intern-2023
+Title: Bristol Myers Squibb CMC Regulatory Intern - Summer 2023
+
+Role: Chemistry, Manufacturing & Controls (CMC) Regulatory Intern
+Location: Summit, NJ
+Rating: 4/5
+
+Summary:
+BMS has one of the most well-structured intern programs in Big Pharma. The "Summer Scholars" program puts you through orientation week (meeting executives, learning the pipeline), assigns you a real project, and ends with an intern symposium where you present your work. Very professional, very organized.
+
+My Project:
+I assisted with preparing a CMC section for a BLA (Biologics License Application) submission for a CAR-T therapy. Specifically, I worked on the drug substance specifications section — understanding what analytical tests prove the product is what you say it is. I reviewed ICH Q6B guidance extensively. I also attended FDA meeting prep sessions (Pre-BLA meetings) which was surreal as an intern.
+
+What You Learn:
+- ICH Q6A/Q6B: specifications for drug substances
+- CTD (Common Technical Document) format — how regulatory filings are structured globally
+- Analytical method validation concepts
+- How CMC data package connects to clinical data in a submission
+- Veeva Vault for document management (industry standard)
+
+Interview:
+Two rounds. Phone screen (behavioral + why BMS specifically — know their pipeline, know Opdivo/Yervoy/Revlimid). Panel interview: technical question on regulatory pathway (know IND vs NDA vs BLA), a case study on a CMC problem, behavioral questions. They asked about 21 CFR Part 211 knowledge.
+
+Pay: $27-30/hr. Housing stipend: $2,500 for the summer. NJ Transit is easy — Summit is 45 min from NYC Penn Station.
+
+Intern Cohort: ~400 interns company-wide. Strong intern community. Several interns from my cohort converted to full-time.
+
+Culture: Professional, respectful, inclusive. BMS has strong DEI commitments — I noticed genuine diversity in leadership, not just interns. Work-life balance was good for pharma.
+
+Advice for Applicants:
+Know the BMS pipeline. Know CAR-T therapy basics if applying to oncology teams. Study the FDA submission process at a high level. Have a reason for choosing regulatory over clinical or research.
