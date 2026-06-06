@@ -8,6 +8,7 @@ Embedding model: all-MiniLM-L6-v2 (sentence-transformers)
     multilingual support and quality, at API cost (~$0.02/1M tokens)
 """
 
+from src.ingest import Chunk, ingest_all
 import os
 import sys
 import chromadb
@@ -15,7 +16,6 @@ from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunct
 from typing import List
 
 sys.path.insert(0, os.path.dirname(__file__))
-from ingest import Chunk, ingest_all
 
 CHROMA_PATH = os.path.join(os.path.dirname(__file__), "../chroma_db")
 COLLECTION_NAME = "biotech_internships"
@@ -24,7 +24,8 @@ COLLECTION_NAME = "biotech_internships"
 def get_collection(reset: bool = False):
     """Return the ChromaDB collection, creating it if needed."""
     client = chromadb.PersistentClient(path=CHROMA_PATH)
-    embed_fn = SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
+    embed_fn = SentenceTransformerEmbeddingFunction(
+        model_name="all-MiniLM-L6-v2")
 
     if reset:
         try:
@@ -108,7 +109,8 @@ if __name__ == "__main__":
     build_vector_store(chunks, reset=True)
 
     print("\n--- Smoke test ---")
-    hits = semantic_search("What is the interview process at Benchling?", n_results=3)
+    hits = semantic_search(
+        "What is the interview process at Benchling?", n_results=3)
     for h in hits:
         print(f"\n[{h['company']}] score={h['score']}")
         print(h["text"][:200])

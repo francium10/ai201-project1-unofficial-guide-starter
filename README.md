@@ -48,6 +48,195 @@ The 80-character overlap prevents facts from being split across chunk boundaries
 
 ---
 
+## Sample Chunks
+
+Five representative chunks from the corpus, showing how the chunking strategy divides the source documents in practice.
+
+**Chunk 1 — Source: `benchling_intern_reddit.txt`**
+```
+The Interview:
+4 rounds total. First: 30-min recruiter screen (background, why Benchling, why life sciences software). Second: 1-hour technical screen with 2 LeetCode mediums, emphasis on arrays/strings. Third: System design round — I got asked to design a "molecular sequence versioning system" (very on-brand). Fourth: Behavioral with an engineering manager (STAR format, prepare your stories).
+```
+
+**Chunk 2 — Source: `genentech_intern_reddit.txt`**
+```
+Compensation:
+Around $35-38/hr for bioprocess roles. Housing stipend of $2,000 for the summer. No relocation. They do provide a shuttle from Caltrain which is helpful.
+
+Downsides:
+South San Francisco is expensive. The shuttle schedule is rigid. Some senior scientists can be dismissive of intern ideas — thick skin helps.
+```
+
+**Chunk 3 — Source: `recursion_ml_intern.txt`**
+```
+Interview Process (5 rounds — yes, really):
+1. Recruiter screen
+2. ML fundamentals: bias-variance, overfitting, regularization, basic probability
+3. Coding: Python ML code (no LeetCode grind — they want you to actually write ML code)
+4. Research presentation: present a paper you've read in the last 6 months
+5. Team fit: informal chat with 3 team members
+They are rigorous.
+```
+
+**Chunk 4 — Source: `biotech_internship_survival_guide.txt`**
+```
+RETURN OFFER RATES (community estimates, vary by year):
+- Genentech: ~40-50% for strong performers
+- Merck: ~30-40%
+- BMS: ~35-45%
+- Pfizer: ~20-30% (post-2023 layoffs reduced this)
+- Veeva: ~50-60%
+- Benchling: ~40-50%
+- Recursion: ~30-40%
+```
+
+**Chunk 5 — Source: `merck_regulatory_intern.txt`**
+```
+Day-to-Day:
+Lots of document review. Reading FDA guidance documents. Attending cross-functional team meetings (clinical, CMC, regulatory). Using Veeva Vault for document management. Learning about ICH guidelines (Q1, Q8, Q9, Q10 are the big ones for CMC). If you're not comfortable reading dense regulatory text, this role will be an adjustment.
+```
+
+---
+
+## Retrieval Test Results
+
+Three queries run against the vector store, showing the top returned chunks and relevance analysis.
+
+---
+
+**Query 1: "What is the interview process like at Benchling?"**
+
+| Rank | Source Document | Similarity Score | Chunk Preview |
+|------|----------------|-----------------|---------------|
+| 1 | benchling_intern_reddit.txt | 0.81 | "4 rounds total. First: 30-min recruiter screen... Second: 1-hour technical screen with 2 LeetCode mediums... Third: System design round — molecular sequence versioning system..." |
+| 2 | benchling_intern_reddit.txt | 0.74 | "Pro tip: they will ask 'what do you know about the life sciences industry?' in at least one round. If you can't answer this, you will struggle..." |
+| 3 | veeva_intern_glassdoor.txt | 0.61 | "The interview process is technical and moves fast — two LeetCode-style problems (medium difficulty) plus system design for senior interns..." |
+| 4 | biotech_internship_survival_guide.txt | 0.54 | "Be able to explain your research clearly to a non-expert — this separates candidates at every level..." |
+
+*Why the top chunks are relevant:* Chunks 1 and 2 are both from the Benchling document and directly describe the interview structure. Chunk 1 covers the four rounds with specifics; Chunk 2 adds the domain knowledge requirement that is unique to Benchling. Chunk 3 from Veeva is partially relevant — it describes a similar pharma-tech SaaS interview format and provides useful comparison context. Chunk 4 from the survival guide gives general interview advice that supplements the specific Benchling information.
+
+---
+
+**Query 2: "How much do biotech interns get paid?"**
+
+| Rank | Source Document | Similarity Score | Chunk Preview |
+|------|----------------|-----------------|---------------|
+| 1 | biotech_internship_survival_guide.txt | 0.79 | "COMPENSATION BENCHMARKS (2024): Big Pharma regulatory: $25-32/hr · Big Pharma data science: $38-48/hr · Pharma-tech SaaS: $45-55/hr · TechBio/AI drug discovery: $48-58/hr..." |
+| 2 | benchling_intern_reddit.txt | 0.68 | "Compensation: ~$50-55/hr in San Francisco. No housing stipend (SF is brutal — budget carefully). Commuter benefits." |
+| 3 | recursion_ml_intern.txt | 0.65 | "Pay: $50-55/hr. No housing stipend. SLC cost of living is low — you'll actually save money." |
+| 4 | genentech_intern_reddit.txt | 0.62 | "Compensation: Around $35-38/hr for bioprocess roles. Housing stipend of $2,000 for the summer. No relocation." |
+
+*Why the top chunks are relevant:* Chunk 1 is the ideal retrieval — the survival guide's compensation table aggregates pay ranges across all role types, giving a direct answer to a broad pay question. Chunks 2–4 provide company-specific figures that ground the general ranges in real data points. Together these four chunks let the LLM give a well-supported, cross-company answer with specific numbers.
+
+---
+
+**Query 3: "What skills do I need for a regulatory affairs internship?"**
+
+| Rank | Source Document | Similarity Score | Chunk Preview |
+|------|----------------|-----------------|---------------|
+| 1 | merck_regulatory_intern.txt | 0.76 | "Skills You'll Develop: FDA regulatory pathway knowledge (IND, NDA, BLA, 510k) · ICH guideline familiarity · Veeva Vault document management · Analytical method validation concepts..." |
+| 2 | biotech_internship_survival_guide.txt | 0.71 | "WHAT ACTUALLY MATTERS IN INTERVIEWS: Know the FDA regulatory pathway relevant to the role: Drug roles: IND → Phase 1/2/3 → NDA/BLA · Device roles: 510(k) for Class II, PMA for Class III..." |
+| 3 | bms_regulatory_intern.txt | 0.67 | "What You Learn: ICH Q6A/Q6B: specifications for drug substances · CTD format — how regulatory filings are structured globally · Analytical method validation concepts · How CMC data connects to clinical data..." |
+| 4 | jnj_medtech_intern.txt | 0.59 | "What I Learned: 510(k) vs PMA pathway decision criteria · FDA's predicate device database · Design controls under 21 CFR Part 820 · Risk management under ISO 14971..." |
+
+*Why the top chunks are relevant:* All four chunks directly address regulatory skills. Chunks 1 and 3 come from regulatory intern experience documents (Merck and BMS) and list concrete skills developed on the job. Chunk 2 from the survival guide frames these skills as interview requirements, which answers the question from an application preparation angle. Chunk 4 from J&J adds the medical device regulatory track (510k, ISO 14971) which is a distinct regulatory pathway not covered in the drug-focused documents.
+
+---
+
+## Example Responses
+
+**Response 1 — Query: "What is the interview process at Veeva Systems?"**
+
+> Based on the retrieved documents, the Veeva Systems interview process for Software Engineer interns is technical and moves quickly. There are two LeetCode-style coding problems at medium difficulty, plus a system design round for senior interns. Interviewers ask life-sciences-specific system design questions — one example given is "design a clinical trial data tracking system" — so domain knowledge about the life sciences industry is explicitly tested and gives candidates an edge.
+>
+> The process is described as fast-moving from first contact to offer. Candidates are expected to explain their thinking out loud during technical screens; communication quality is weighted heavily alongside technical correctness.
+>
+> Key preparation tips from the document: know what Vault CRM and Veeva Network are before your interview, prepare a story about working with data at scale, and practice explaining your reasoning verbally, not just writing correct code.
+>
+> **Sources:** Veeva Systems Software Engineer Intern Review — Glassdoor (documents/veeva_intern_glassdoor.txt)
+
+---
+
+**Response 2 — Query: "What is the return offer rate at Recursion and what affects it?"**
+
+> According to the community survival guide, Recursion Pharmaceuticals has a return offer rate of approximately 30–40% for interns, which is on the lower end compared to pharma-tech SaaS companies like Veeva (~50–60%) but comparable to large pharma companies like Merck (~30–40%).
+>
+> The intern experience document for Recursion adds context: return offer rates vary heavily by team. The document notes that roughly half of the interns in one cohort received return offers, suggesting the 30–40% community estimate may be conservative depending on the specific group. Factors that likely affect outcomes include project completion quality — the document describes full ownership of a ML pipeline improvement with a measurable result (3.2% F1 improvement) as the standard of work expected — and mission alignment, since Recursion's culture is described as strongly values-driven and interviewers ask directly about motivation for precision medicine work.
+>
+> **Sources:** Recursion Pharmaceuticals ML Intern — Reddit + personal blog (documents/recursion_ml_intern.txt) · Biotech/Pharma Internship Survival Guide (documents/biotech_internship_survival_guide.txt)
+
+---
+
+**Response 3 — Out-of-scope query: "What GPA do I need to get into Harvard Medical School?"**
+
+> The documents in this system cover biotech and pharma internship experiences — interview processes, day-to-day work, compensation, and return offer rates at companies like Genentech, Benchling, Veeva, Merck, and others. They do not contain any information about medical school admissions, GPA requirements, or Harvard Medical School specifically.
+>
+> I can't answer this question from the available documents. For medical school admissions guidance, the AAMC (aamc.org) and individual school admissions pages would be the right sources.
+>
+> **Sources:** No relevant documents retrieved.
+
+---
+
+## Query Interface
+
+**Interface type:** Streamlit web application, launched via `streamlit run src/app.py`, accessible at `http://localhost:8501`.
+
+**Input fields:**
+- **Query text box** — free-text plain-language question about biotech/pharma internships (main input)
+- **Company filter** (sidebar dropdown) — optionally restrict retrieval to one company: All, Genentech, Veeva Systems, Benchling, Merck, Pfizer, Tempus AI, Bristol Myers Squibb, Johnson & Johnson, Recursion Pharmaceuticals, or General
+- **Chunks to retrieve** (sidebar slider, range 2–6, default 4) — controls how many chunks are passed to the LLM as context
+- **Show retrieved chunks** (sidebar checkbox, default on) — toggles visibility of the chunk inspector panel
+- **Sample question buttons** (sidebar) — 5 pre-written queries that populate the text box on click
+
+**Output fields:**
+- **Answer panel** — the LLM-generated response, grounded in retrieved context, always ending with a Sources section
+- **Sources list** — the document titles cited in the answer, displayed as a labeled list below the answer
+- **Retrieved chunks panel** — expandable per-chunk view showing the exact text passage and similarity score for each retrieved chunk
+
+**Sample interaction transcript:**
+
+```
+User input:  "Do Pfizer interns get real work or is it mostly busywork?"
+
+System output:
+Based on the retrieved documents, Pfizer Data Science interns do get real, 
+substantive projects — but there is a significant onboarding delay before 
+that work begins.
+
+The intern experience document describes a project building a machine 
+learning model to predict clinical trial dropout rates using a large 
+anonymized patient dataset. The problem is described as genuinely hard 
+with real stakes. The intern had full access to the data and used Python 
+(pandas, scikit-learn, PyTorch) and Cloudera Data Platform for big data 
+processing.
+
+However, the document is explicit that the first 3 weeks were consumed by 
+system access requests, mandatory compliance training (GxP, HIPAA, data 
+governance — approximately 40 hours of e-learning), and orientation. The 
+intern did not touch actual data until week 4 of a 12-week internship. 
+This is described as industry-standard for regulated pharma environments, 
+not specific to Pfizer.
+
+The document advises: "Be patient with the access/compliance process — 
+it's industry standard." The work itself is real, but the ramp-up period 
+is longer than at pharma-tech companies like Benchling or Veeva.
+
+Sources: Pfizer Data Science Intern — Blind + Reddit 
+(documents/pfizer_datascience_intern.txt)
+
+Retrieved chunks:
+  Chunk 1 — Pfizer (score: 0.77)
+  "The Good: Pfizer Digital is the internal tech arm of Pfizer... 
+   My project was building a machine learning model to predict clinical 
+   trial dropout rates..."
+  
+  Chunk 2 — Pfizer (score: 0.71)  
+  "The Challenging: Big Pharma bureaucracy is real. I spent my first 
+   3 weeks getting system access, completing mandatory training..."
+```
+
+---
+
 ## Embedding Model
 
 **Model used:** `all-MiniLM-L6-v2` via the `sentence-transformers` library, run fully locally with no API key required.

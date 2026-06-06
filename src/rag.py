@@ -1,22 +1,22 @@
 """
-rag.py — Grounded response generation using Groq + retrieved context.
-Model: llama-3.3-70b-versatile (free tier at console.groq.com)
+rag.py — Grounded response generation using OpenAI + retrieved context.
+Model: gpt-4o-mini (fast, cheap, excellent quality)
 
 Grounding rule: the LLM is instructed to answer ONLY from provided context.
 Every response must end with a Sources section listing cited documents.
 """
 
+from vector_store import semantic_search
 import os
 import sys
-from groq import Groq
+from openai import OpenAI
 from dotenv import load_dotenv
 
 sys.path.insert(0, os.path.dirname(__file__))
-from vector_store import semantic_search
 
 load_dotenv()
 
-MODEL = "llama-3.3-70b-versatile"
+MODEL = "gpt-4o-mini"  # swap to "gpt-4o" if you want higher quality
 
 SYSTEM_PROMPT = """You are the Unofficial Guide to Biotech & Pharma Internships — a direct, honest advisor for students navigating internship applications.
 
@@ -42,13 +42,14 @@ def generate_answer(query: str, n_chunks: int = 4, company_filter: str = None) -
     Full RAG pipeline: retrieve → format context → generate grounded answer.
     Returns: { answer, sources, chunks }
     """
-    hits = semantic_search(query, n_results=n_chunks, company_filter=company_filter)
+    hits = semantic_search(query, n_results=n_chunks,
+                           company_filter=company_filter)
 
     if not hits:
         return {"answer": "No relevant documents found.", "sources": [], "chunks": []}
 
     context = format_context(hits)
-    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     response = client.chat.completions.create(
         model=MODEL,
