@@ -253,7 +253,7 @@ For a production system, the two most relevant alternatives are OpenAI's `text-e
 **System prompt grounding instruction:**
 The system prompt contains five explicit rules that enforce grounding. The core rule is: *"Answer ONLY using the context documents provided. Do not use outside knowledge."* A second rule requires: *"If the context doesn't contain enough information, say so clearly — never fabricate."* A third requires specificity: *"Be specific: include numbers, names, and details from the documents."* Together these rules prevent the LLM from drawing on its training data about well-known companies like Pfizer or Genentech — it must answer only from what was retrieved.
 
-The model is `llama-3.3-70b-versatile` via Groq, with `temperature=0.2` to reduce creative variance and keep responses factual and consistent across repeated queries.
+The model is `gpt-4o-mini` via the OpenAI API, with `temperature=0.2` to reduce creative variance and keep responses factual and consistent across repeated queries.
 
 **How source attribution is surfaced in the response:**
 Every response is required to end with a `Sources:` section that lists the document titles it drew from. This is enforced in both the system prompt ("End EVERY response with a 'Sources:' section listing the document titles you drew from") and the user message template. In the Streamlit UI, the sources are also displayed separately below the answer as a labeled list, and users can expand each retrieved chunk individually to see exactly which text passage informed the answer. This gives three levels of attribution: the answer text itself, the Sources footer, and the raw chunk inspector.
@@ -298,6 +298,24 @@ The spec's instruction to "test retrieval before you add generation" was the sin
 
 **One way your implementation diverged from the spec, and why:**
 The spec suggests a simple query interface — "a web UI, a command-line tool, or a notebook." The implementation went beyond this by adding a chunk inspector panel in the Streamlit UI that lets users expand each retrieved chunk and see the exact text passage and similarity score. This was not in the spec but became necessary during evaluation: without seeing which chunks were retrieved, it was impossible to diagnose whether a partial or inaccurate response was a retrieval failure or a generation failure. Making retrieval transparent in the UI turned a debugging tool into a feature — it also demonstrates to anyone running the system exactly how RAG works, which is valuable for a project submission.
+
+---
+
+## Stretch Feature: Metadata Filtering (+1pt)
+
+The Streamlit UI includes a company filter dropdown in the sidebar that restricts retrieval to chunks from a single company. When a company is selected, `semantic_search()` passes a `where={"company": "<CompanyName>"}` filter directly to ChromaDB — this is applied at the vector store level before results are returned, not as a post-retrieval step.
+
+**Demonstrated effect on query results:**
+
+Query: *"What is the interview process like?"* — no filter applied:
+- Returns chunks from Benchling, Veeva, and the survival guide
+- Answer covers multiple companies with general advice
+
+Same query — filter set to "Benchling":
+- Returns only Benchling document chunks
+- Answer is specific: 4 rounds, LeetCode mediums, molecular sequence system design prompt, EM behavioral
+
+This is visible in the chunk inspector panel — with the filter active, all retrieved chunks show `company: Benchling` in their metadata, and the similarity scores shift because the search space is constrained to that document's chunks only.
 
 ---
 

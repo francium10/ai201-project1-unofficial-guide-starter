@@ -6,13 +6,13 @@ Grounding rule: the LLM is instructed to answer ONLY from provided context.
 Every response must end with a Sources section listing cited documents.
 """
 
-from vector_store import semantic_search
 import os
 import sys
 from openai import OpenAI
 from dotenv import load_dotenv
 
 sys.path.insert(0, os.path.dirname(__file__))
+from vector_store import semantic_search
 
 load_dotenv()
 
@@ -42,8 +42,7 @@ def generate_answer(query: str, n_chunks: int = 4, company_filter: str = None) -
     Full RAG pipeline: retrieve → format context → generate grounded answer.
     Returns: { answer, sources, chunks }
     """
-    hits = semantic_search(query, n_results=n_chunks,
-                           company_filter=company_filter)
+    hits = semantic_search(query, n_results=n_chunks, company_filter=company_filter)
 
     if not hits:
         return {"answer": "No relevant documents found.", "sources": [], "chunks": []}

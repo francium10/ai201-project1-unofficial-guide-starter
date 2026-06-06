@@ -8,16 +8,33 @@ Embedding model: all-MiniLM-L6-v2 (sentence-transformers)
     multilingual support and quality, at API cost (~$0.02/1M tokens)
 """
 
-from src.ingest import Chunk, ingest_all
+from typing import List
+from ingest import Chunk, ingest_all
 import os
 import sys
-import chromadb
-from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
-from typing import List
 
+# Ensure the src directory is on sys.path so local imports work when
+# running the script from the project root.
 sys.path.insert(0, os.path.dirname(__file__))
 
-CHROMA_PATH = os.path.join(os.path.dirname(__file__), "../chroma_db")
+
+# Optional heavy dependencies — provide a clearer message if they're missing.
+try:
+    import chromadb
+    from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
+except ModuleNotFoundError as e:
+    print(
+        "Missing dependency: {}. Install required packages with: pip install -r requirements.txt".format(
+            e.name)
+    )
+    sys.exit(1)
+
+CHROMA_PATH = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "chroma_db")
+)
+
+# Ensure the persistent DB directory exists
+os.makedirs(CHROMA_PATH, exist_ok=True)
 COLLECTION_NAME = "biotech_internships"
 
 

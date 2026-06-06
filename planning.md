@@ -103,7 +103,7 @@ User Query
 [ Top-k Chunks ]  (text + metadata: company, role_type, source_title)
     │
     ▼
-[ generate_answer() ]  ←── Groq API (llama-3.3-70b-versatile)
+[ generate_answer() ]  ←── OpenAI API (gpt-4o-mini)
     │                        system prompt enforces grounding
     │                        temperature=0.2 for factual output
     ▼
@@ -120,7 +120,14 @@ Build-time pipeline (run once via setup.py):
 
 ---
 
-## AI Tool Plan
+## Stretch Features
+
+### Metadata filtering (+1pt)
+
+The Streamlit UI includes a company filter dropdown that restricts ChromaDB retrieval to chunks from a single company. When the user selects a company (e.g., "Benchling"), the `semantic_search()` function passes a `where={"company": "Benchling"}` filter to ChromaDB's query, which applies it at the vector store level before returning results — not as a post-retrieval filter. This means the top-k chunks returned are already restricted to the selected company, and the LLM only sees context from that source.
+
+**Visible effect on results:** A query for "what is the interview process like?" with no filter returns chunks from Benchling, Veeva, and the survival guide. The same query with the Benchling filter returns only Benchling chunks, producing a more focused answer. This is documented in the demo video.
+
 
 **Milestone 3 — Ingestion and chunking:**
 Used Claude to generate the sliding-window chunker with sentence-boundary snapping (`ingest.py`). Prompted with the document structure (short review-style paragraphs, key facts in 1–3 sentences) and the desired chunk size rationale. Reviewed the chunking logic manually and verified it handles edge cases (last chunk, overlap at end of document). Adjusted the sentence-boundary snap window from ±30 to ±50 chars after testing on a sample document.

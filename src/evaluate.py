@@ -3,10 +3,10 @@ evaluate.py — Evaluation framework (Milestone 6)
 Run from project root: python src/evaluate.py
 """
 
+from rag import generate_answer
 import sys
 import os
 sys.path.insert(0, os.path.dirname(__file__))
-from rag import generate_answer
 
 TEST_CASES = [
     {
@@ -78,11 +78,13 @@ def run_evaluation():
         print(f"Answer (truncated): {result['answer'][:400]}...")
         print(f"Retrieved from: {[c['company'] for c in result['chunks']]}")
         print(f"Retrieval: {retrieval} | Response: {response}")
-        summary.append({"id": tc["id"], "retrieval": retrieval, "response": response})
+        summary.append(
+            {"id": tc["id"], "retrieval": retrieval, "response": response})
 
     print(f"\n{'='*65}\nSUMMARY")
     for r in summary:
-        print(f"  {r['id']}: Retrieval={r['retrieval']} | Response={r['response']}")
+        print(
+            f"  {r['id']}: Retrieval={r['retrieval']} | Response={r['response']}")
 
 
 if __name__ == "__main__":
